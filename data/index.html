@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Качалка</title>
+  <link rel="stylesheet" href="style.css" media="all"/>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="jQuery.ajaxForm2.js"></script>
+</head>
+<body class="form-style-1">
+
+<form method="post" action="settings.json">
+  <table id="settings">
+    <tr>
+      <td><label for="m_input">Режим</label></td>
+      <td><select name="m" id="m_input">
+        <option value="0">Выключено</option>
+        <option value="1">Кач</option>
+      </select></td>
+      <td><span id="m_value"></span></td>
+    </tr>
+    <tr>
+      <td><label for="p_input">Период</label></td>
+      <td><input type="number" name="p" id="p_input" min="100" max="10000"></td>
+      <td><span id="p_value"></span></td>
+    </tr>
+    <tr>
+      <td><label for="s_input">Скорость</label></td>
+      <td><input type="number" name="s" id="s_input" min="1" max="1000"></td>
+      <td><span id="s_value"></span></td>
+    </tr>
+    <tr>
+      <td><label for="a0_input">Угол 1</label></td>
+      <td><input type="number" name="a0" id="a0_input" min="0" max="180"></td>
+      <td><span id="a0_value"></span></td>
+    </tr>
+    <tr>
+      <td><label for="a1_input">Угол 2</label></td>
+      <td><input type="number" name="a1" id="a1_input" min="0" max="180"></td>
+      <td><span id="a1_value"></span></td>
+    </tr>
+    <tr>
+      <td><input type="reset" name="" value="Обновить"></td>
+      <td></td>
+      <td style="text-align: right"><input type="submit" name="" value="Сохранить"></td>
+    </tr>
+  </table>
+</form>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var m_input = $('#m_input');
+        $('form').formAjax2({
+            afterLoadData: function (data) {
+                m_input.trigger('change');
+            }
+        });
+    })
+</script>
+</body>
+</html>
